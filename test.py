@@ -125,7 +125,6 @@ def initialize_morbo_state(
         length_max=1.6,
         success_streak=3,
         failure_streak=max(1, batch_size),
-        hypervolume=True,
         use_ard=True,
         max_cholesky_size=2000,
         raw_samples=2048,
@@ -133,10 +132,15 @@ def initialize_morbo_state(
         track_history=True,
         sample_subset_d=True,
         winsor_pct=5.0, # Cuts extreme values to stabilize GP.
-        max_reference_point=reference_point,
+        # max_reference_point=reference_point,
+        max_reference_point= reference_point,
         tabu_tenure=5,
         verbose=True,
-
+        
+        # Key parameters for comparison
+        hypervolume=True, # Use hypervolume-based TR management
+        use_noisy_trbo=True,  # Noisy handling
+        fixed_scalarization=False, # Random weights
     )
 
     # Create the state
